@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Changelog para la tabla usuario -->
+    <changeSet id="1" author="tu_nombre">
+        <!-- Crear la secuencia -->
+        <createSequence sequenceName="usuario_id_seq" startValue="1" incrementBy="1"/>
+
+        <!-- Crear la tabla usuario -->
+        <createTable tableName="usuario">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nombre" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="prioridad" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <!-- Alterar la tabla para usar la secuencia -->
+        <addAutoIncrement tableName="usuario" columnName="id" columnDataType="bigint" sequenceName="usuario_id_seq"/>
+    </changeSet>
+
+    <!-- Otras migraciones si las hay -->
+</databaseChangeLog>

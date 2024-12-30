@@ -12,14 +12,16 @@ public class UsuarioModel {
     private Long id;
 
     private String nombre;
+
+    @Column(unique = true, nullable = false)
     private String email;
     private Integer prioridad;
 
-    public void setPrioridad(Integer prioridad){
+    public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
     }
 
-    public Integer getPrioridad(){
+    public Integer getPrioridad() {
         return prioridad;
     }
 
@@ -46,5 +48,5 @@ public class UsuarioModel {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 }
